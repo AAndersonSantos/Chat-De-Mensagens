@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import redis from './redis';
 import authRegister from './routes/auth/registerRoutes';
+import authLogin from './routes/auth/loginRoutes';
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/auth', authRegister)
+app.use('/auth', authRegister, authLogin)
 
 app.get('/messages', async (req, res) => {
   const messages = await redis.lrange('chat:messages', 0, -1);

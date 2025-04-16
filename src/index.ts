@@ -2,6 +2,9 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import app from './app';
 import { setupWebSocket } from './socket';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const httpServer = createServer(app);
 
@@ -16,7 +19,8 @@ const io = new Server(httpServer, {
 
 setupWebSocket(io);
 
-const PORT = 3001;
+const PORT = process.env.PORT;
+
 httpServer.listen(PORT, () => {
-  console.log('Servidor WebSocket rodando na porta 3001');
+  console.log(`Servidor WebSocket rodando na porta ${PORT}`);
 });
