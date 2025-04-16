@@ -11,7 +11,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: "http://localhost:3000",
-    methods: ["GET", "POST", "OPTIONS"], // Adicione OPTIONS
+    methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   },
