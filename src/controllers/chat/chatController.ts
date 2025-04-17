@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import redis from '../../redis';
+import { RequestWithUserId } from '../../types/authMiddlewareTypes';
 
 export const chat = async (req: Request, res: Response): Promise<void> => {
     try {
